@@ -2,7 +2,6 @@ import { CosmosClient } from "@azure/cosmos";
 import { v4 } from "uuid";
 import { Expense } from "../entities";
 import NotFoundError from "../errors/not-found-error";
-import { EmployeeDaoImpl } from "./employee-dao-impl";
 import { ExpenseDao } from "./expense-dao";
 
 

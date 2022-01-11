@@ -1,4 +1,4 @@
-import { ExpenseDaoImpl } from "../daos/request-dao-impl"
+import { ExpenseDaoImpl } from "../daos/expense-dao-impl"
 import { Expense } from "../entities"
 
 
@@ -16,8 +16,36 @@ describe("Expense request DAO tests", ()=>{
             approved: false
         }
         savedExpense = await expenseDao.createExpense(expense);
-        expect(savedExpense.id).not.toBeFalsy();
+        expect(savedExpense.id).toBeTruthy();
         expect(savedExpense.amount).toEqual(93500);
+    })
+
+    it("should get all expenses", async ()=>{
+        const expenses: Expense[] = await expenseDao.getAllExpenses();
+        expect (expenses.length).toBeGreaterThan(1);
+    })
+
+    it("should get an expense by ID", async ()=>{
+        const expense: Expense = await expenseDao.getExpenseById(savedExpense.id)
+        expect(expense.id).toBeTruthy();
+        expect(expense.requestedBy).toEqual("101");
+    })
+
+    it("should modify an existing expense", async ()=>{
+        const newExpense: Expense = savedExpense;
+        newExpense.approved = true;
+        newExpense.comment = "Approved by Man E. Ger";
+        newExpense.amount = 850_00;
+        const expense:Expense = await expenseDao.modifyExpense(newExpense);
+        expect(expense.comment).toBeTruthy;
+        expect(expense.amount).toEqual(85000);
+        expect(expense.approved).toBeTruthy;
+    })
+
+    it("should delete an expense", async ()=> {
+        const deletedExpense: Expense = await expenseDao.deleteExpense(savedExpense.id)
+        expect(deletedExpense.comment).toBeTruthy();
+        expect(deletedExpense.reason).toEqual(savedExpense.reason);
     })
 
 

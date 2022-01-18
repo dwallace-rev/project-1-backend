@@ -14,4 +14,6 @@ export interface ExpenseService{
     deleteExpense(id: string): Promise<Expense>
 
     expenseAction(id:string, approval: Boolean, comment?: string): Promise<Expense>
+
+    getExpensesByEmployeeId(id: string): Promise<Expense[]>
 }

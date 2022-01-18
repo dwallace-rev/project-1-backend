@@ -13,6 +13,8 @@ export class ExpenseDaoImpl implements ExpenseDao {
 
     async createExpense(expense: Expense): Promise<Expense> {
         expense.id = v4();
+        expense.requestDate = Date.now();
+        expense.pending = true;
         const response = await container.items.create(expense);
         return response.resource;
     }

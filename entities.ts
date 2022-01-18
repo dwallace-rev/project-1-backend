@@ -15,6 +15,7 @@ export interface Expense{
     amount: number // stored in cents
     requestedBy: string //employee ID
     requestDate: number // unix epoch time
-    approved: boolean //default false.
+    approved: boolean // default false.
+    pending: boolean // default true.
     comments?: string[] // comment to be left by a manager
 }

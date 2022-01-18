@@ -13,6 +13,8 @@ describe("Expense request DAO tests", ()=>{
             reason:"Just because",
             amount: 935_00,
             requestedBy: "101",
+            requestDate: Date.now(),
+            pending:true,
             approved: false
         }
         savedExpense = await expenseDao.createExpense(expense);
@@ -34,17 +36,17 @@ describe("Expense request DAO tests", ()=>{
     it("should modify an existing expense", async ()=>{
         const newExpense: Expense = savedExpense;
         newExpense.approved = true;
-        newExpense.comment = "Approved by Man E. Ger";
+        newExpense.comments = ["Approved by Man E. Ger"];
         newExpense.amount = 850_00;
         const expense:Expense = await expenseDao.modifyExpense(newExpense);
-        expect(expense.comment).toBeTruthy;
+        expect(expense.comments).toBeTruthy;
         expect(expense.amount).toEqual(85000);
         expect(expense.approved).toBeTruthy;
     })
 
     it("should delete an expense", async ()=> {
         const deletedExpense: Expense = await expenseDao.deleteExpense(savedExpense.id)
-        expect(deletedExpense.comment).toBeTruthy();
+        expect(deletedExpense.comments).toBeTruthy();
         expect(deletedExpense.reason).toEqual(savedExpense.reason);
     })
 

@@ -11,7 +11,8 @@ describe("Employee DAO tests", ()=>{
     it("should create a new Employee", async ()=>{
         const employee:Employee = {
             id:"", 
-            username: "CaptainYesterday", 
+            username: "CaptainYesterday",
+            password: "IloveLeela",
             fname:"Philip", 
             lname:"Fry", 
             expenses:[], 
@@ -34,6 +35,7 @@ describe("Employee DAO tests", ()=>{
         const newEmployee :Employee = {
             id: savedEmployee.id,
             username: "superking",
+            password: "benderisgreat",
             fname: "Bender",
             lname: "Rodriguez",
             expenses: savedEmployee.expenses,

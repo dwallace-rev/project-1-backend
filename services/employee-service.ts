@@ -14,6 +14,8 @@ export interface EmployeeService {
     deleteEmployee(id: string): Promise<Employee>
 
     login(username: string, password:string): Promise<Employee>
+    
+    getUsername(id:string): Promise<string>
 
     //TO DO METHODS BELOW
 }

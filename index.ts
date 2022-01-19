@@ -36,6 +36,17 @@ app.get("/employees/:id", async (req, res) => {
     }
 })
 
+app.get("/employees/username/:id", async (req, res)=>{
+    const {id} = req.params;
+    try{
+        const username: string = await employeeService.getUsername(id)
+        res.status(200);
+        res.send(username);
+    } catch (error) {
+        errorHandler(error, res, "Employee");
+    }
+})
+
 app.post("/employees", async (req, res)=>{
     try{
         const employee: Employee = req.body;

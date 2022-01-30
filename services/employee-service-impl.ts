@@ -1,8 +1,6 @@
 import { EmployeeDaoImpl } from "../daos/employee-dao-impl";
 import { Employee } from "../entities";
 import BadLoginError from "../errors/bad-login-error";
-import BadLogin from "../errors/bad-login-error";
-import DuplicateValueError from "../errors/duplicate-value-error";
 import NotFoundError from "../errors/not-found-error";
 import { EmployeeService } from "./employee-service";
 
